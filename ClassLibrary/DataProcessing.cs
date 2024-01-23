@@ -1,6 +1,6 @@
 namespace ClassLibrary;
 
-public class DataProcessing
+public static class DataProcessing
 {
     
 }
