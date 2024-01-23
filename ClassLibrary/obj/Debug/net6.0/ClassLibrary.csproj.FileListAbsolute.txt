@@ -1,0 +1,11 @@
+/Users/daniilkostalevsky/Code/C#/KHW_3_1/ClassLibrary/bin/Debug/net6.0/ClassLibrary.deps.json
+/Users/daniilkostalevsky/Code/C#/KHW_3_1/ClassLibrary/bin/Debug/net6.0/ClassLibrary.dll
+/Users/daniilkostalevsky/Code/C#/KHW_3_1/ClassLibrary/bin/Debug/net6.0/ClassLibrary.pdb
+/Users/daniilkostalevsky/Code/C#/KHW_3_1/ClassLibrary/obj/Debug/net6.0/ClassLibrary.GeneratedMSBuildEditorConfig.editorconfig
+/Users/daniilkostalevsky/Code/C#/KHW_3_1/ClassLibrary/obj/Debug/net6.0/ClassLibrary.AssemblyInfoInputs.cache
+/Users/daniilkostalevsky/Code/C#/KHW_3_1/ClassLibrary/obj/Debug/net6.0/ClassLibrary.AssemblyInfo.cs
+/Users/daniilkostalevsky/Code/C#/KHW_3_1/ClassLibrary/obj/Debug/net6.0/ClassLibrary.csproj.CoreCompileInputs.cache
+/Users/daniilkostalevsky/Code/C#/KHW_3_1/ClassLibrary/obj/Debug/net6.0/ClassLibrary.dll
+/Users/daniilkostalevsky/Code/C#/KHW_3_1/ClassLibrary/obj/Debug/net6.0/refint/ClassLibrary.dll
+/Users/daniilkostalevsky/Code/C#/KHW_3_1/ClassLibrary/obj/Debug/net6.0/ClassLibrary.pdb
+/Users/daniilkostalevsky/Code/C#/KHW_3_1/ClassLibrary/obj/Debug/net6.0/ref/ClassLibrary.dll
