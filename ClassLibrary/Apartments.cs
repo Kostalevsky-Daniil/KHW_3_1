@@ -1,6 +1,6 @@
 ﻿namespace ClassLibrary;
 
-public class Apartments
+public class Apartments // Класс представляющий объекты из индивидуального варианта.
 {
     // Объявляем поля класса.
     private int _propertyId;
