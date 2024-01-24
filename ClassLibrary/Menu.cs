@@ -12,11 +12,11 @@ public static class Menu // Класс, который мы будем испо�
         
         while (mainFlag == true)
         {
-            Read();
+            ReadMenu();
         }
     }
 
-    private static void Read() // Метод, который позволит пользователю выбрать режим работы с файлом.
+    private static void ReadMenu() // Метод, который позволит пользователю выбрать режим работы с файлом.
     {
         bool readWriteFlag = true; // Флаг состояния бесконечного ввода.
         while (readWriteFlag == true) // Пока флаг == true, меню будет вызываться бесконечно.
@@ -180,6 +180,37 @@ public static class Menu // Класс, который мы будем испо�
                     break;
                 case 2: // Пользователь решил выйти из меню.
                     filterFlag = false; // Флаг состояния переводится в false и бесконечное меню останавливается.
+                    break;
+            }
+        }
+    }
+
+    private static void WriteMenu(List<Apartments> list)
+    {
+        bool writeFlag = true;
+        while (writeFlag == true)
+        {
+            Console.WriteLine("Выберите опцию: ");
+            Console.WriteLine("1) Перезаписать существующий файл.");
+            Console.WriteLine("2) Записать в новый файл.");
+            Console.WriteLine("3) Вернуться назад.");
+            int writeMenuOption;
+            while (!int.TryParse(Console.ReadLine(), out writeMenuOption) && writeMenuOption < 0 && writeMenuOption > 3) // Проверка на корректность введенной опции.
+            {
+                Console.WriteLine("Ошибка, введены неправильные значения."); // Сообщаем пользователю об ошибке.
+            }
+
+            switch (writeMenuOption)
+            {
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    writeFlag = false;
+                    break;
+                default:
+                    Console.WriteLine("Введена некорректная опция.");
                     break;
             }
         }

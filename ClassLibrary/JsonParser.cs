@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 public static class JsonParser // Класс, созданный для работы с JSON-файлами.
 {
-    public static void WriteJson()
+    public static void WriteJson(List<Apartments> list)
     {
         
     }
