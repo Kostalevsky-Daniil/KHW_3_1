@@ -3,19 +3,18 @@ using System.Text.RegularExpressions;
 
 public static class JsonParser // Класс, созданный для работы с JSON-файлами.
 {
-    public static string WriteJson(List<Apartments> list)
+    public static string WriteJson(List<Apartments> list, int option_stream, int option)
     {
         string jsonFile = "[";
         for (int i = 0; i < list.Count; i++)
         {
-            jsonFile += "  \n{" + "    \n\"property_id\": " + list[i].PropertyId + "    \n\"address\": " + list[i].Address +
-                        "    \n\"bedrooms\": " + list[i].Bedrooms +
-                        "    \n\"bathrooms\": " + list[i].Bathrooms.ToString().Replace(',', '.') + "    \n\"square_feet\":" +
+            jsonFile += "  \n{" + "\t\n\"property_id\": " + list[i].PropertyId + "\t\n\"address\": " + list[i].Address +
+                        "\t\n\"bedrooms\": " + list[i].Bedrooms +
+                        "\t\n\"bathrooms\": " + list[i].Bathrooms.ToString().Replace(',', '.') + "\t\n\"square_feet\":" +
                         list[i].SquareFeet
-                        + "    \n\"is_furnished\": " + list[i].IsFurnished + "    \n\"amenities\": " + "[" +
+                        + "\t\n\"is_furnished\": " + list[i].IsFurnished + "\t\n\"amenities\": " + "[" +
                         list[i].Amenities[i] + "]" + "\n},";
         }
-
         jsonFile += "\n]";
         return jsonFile;
     }
@@ -28,14 +27,26 @@ public static class JsonParser // Класс, созданный для рабо
             List<Apartments> apartmentsList = new List<Apartments>(); // Массив, в котором будут хранится объекты класса.
             List<string> amenities = new List<string>(); // Массив, в котором будут хранится объекты массива типа Apartments.
             string lines = "";
-            if (option == 1)
+            if (option == 1) // Пользователь выбрал режим работы через файловый ввод-вывод.
             { 
                 lines = File.ReadAllText(filePath); // Считываем строку с данными из файла.
             }
-            else if (option == 2)
+            else if (option == 2) // Пользователь выбрал режим работы через стандартный поток ввод-ввывод.
             {
-                string data = "";
-                
+                string temp = ""; // Создаем временную строку, куда будем считывать строки из файла.
+                var standartInput = new StreamReader(Console.OpenStandardInput()); // Создаем стандартный поток.
+                StreamReader streamReader = new StreamReader(filePath); // Создаем streamReader.
+                using (streamReader) 
+                {
+                    Console.SetIn(streamReader);
+                    do
+                    {
+                        temp = streamReader.ReadLine();
+                        lines += temp + "\n";
+                    } while (temp != null);
+
+                    Console.SetIn(standartInput); // Возвращаем стандартный поток.
+                }
             }
             // Создаем паттерн для нахождения нужных элементов в строке.
             string pattern = "\\\"property_id\\\"\\:\\s(\\d+),\\n.*\\\"address\\\":\\s(\\\".*?\\\"),\\n.*\\\"bedrooms\\\":\\s(\\d),\\n.*\\\"bathrooms\\\":\\s(\\d+\\.\\d+),\\n.*\\\"square_feet\\\":\\s(\\d+),\\n.*\\\"is_furnished\\\":\\s(true|false),\\n.*\\\"amenities\\\":\\s*\\[\\s*((?:\\\"[^\\\"]+\\\",\\s*)*\\\"[^\\\"]+\\\")?\\s*\\]";
