@@ -6,7 +6,7 @@ public class Apartments // Класс представляющий объект�
     private int _propertyId;
     private string _address;
     private int _bedrooms;
-    private string _bathrooms;
+    private double _bathrooms;
     private int _squareFeet;
     private bool _isFurnished;
     private List<string> _amenities;
@@ -18,14 +18,14 @@ public class Apartments // Класс представляющий объект�
         _propertyId = 0;
         _address = "Balaklavsky 16";
         _bedrooms = 3;
-        _bathrooms = "2";
+        _bathrooms = 2;
         _squareFeet = 120;
         _isFurnished = true;
         _amenities = new List<string>() {"dog", "cat"};
     }
 
     // Перегруженный конструктор.
-    public Apartments(int propertyId, string address, int bedrooms, string bathrooms, int squareFeet, bool isFurnished, List<string> amenities)
+    public Apartments(int propertyId, string address, int bedrooms, double bathrooms, int squareFeet, bool isFurnished, List<string> amenities)
     {
         // Присваиваем полям считанные значения.
         _propertyId = propertyId;
@@ -53,7 +53,7 @@ public class Apartments // Класс представляющий объект�
         get => _bedrooms; // Возвращаем значение поля.
     }
 
-    public string Bathrooms // Свойство для поля _bathrooms.
+    public double Bathrooms // Свойство для поля _bathrooms.
     {
         get => _bathrooms; // Возвращаем значение поля.
     }
