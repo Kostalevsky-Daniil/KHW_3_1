@@ -1,22 +1,105 @@
 namespace ClassLibrary;
 using System.Text.RegularExpressions;
+using System.IO;
+using System.Text;
 
 public static class JsonParser // Класс, созданный для работы с JSON-файлами.
 {
-    public static string WriteJson(List<Apartments> list, int option_stream, int option)
+    public static void WriteJson(List<Apartments> list, int option, string path) // Метод для записи данных в файл.
     {
-        string jsonFile = "[";
-        for (int i = 0; i < list.Count; i++)
+        string jsonFile = "["; // Создаем строку, в которую будут подаваться данные.
+        for (int i = 0; i < list.Count; i++) 
         {
-            jsonFile += "  \n{" + "\t\n\"property_id\": " + list[i].PropertyId + "\t\n\"address\": " + list[i].Address +
-                        "\t\n\"bedrooms\": " + list[i].Bedrooms +
-                        "\t\n\"bathrooms\": " + list[i].Bathrooms.ToString().Replace(',', '.') + "\t\n\"square_feet\":" +
-                        list[i].SquareFeet
-                        + "\t\n\"is_furnished\": " + list[i].IsFurnished + "\t\n\"amenities\": " + "[" +
-                        list[i].Amenities[i] + "]" + "\n},";
+            jsonFile += "\n  {" + "\n\t\"property_id\": " + list[i].PropertyId + "," + "\n\t\"address\": " + list[i].Address + "," + // Создаем паттерн, по которому данные будут записываться в файл.
+                        "\n\t\"bedrooms\": " + list[i].Bedrooms + "," +
+                        "\n\t\"bathrooms\": " + list[i].Bathrooms.ToString().Replace(',', '.') + "," + "\n\t\"square_feet\": " +
+                        list[i].SquareFeet 
+                        + "," + "\n\t\"is_furnished\": " + list[i].IsFurnished.ToString().ToLower() + "," + "\n\t\"amenities\": " + "[" +
+                        list[i].Amenities[i] + "]" + "\n  }";
+            if (i != list.Count - 1)
+            {
+                jsonFile += ",";
+            }
         }
-        jsonFile += "\n]";
-        return jsonFile;
+        jsonFile += "\n]"; // Добавляем необходимые элементы в конец файла.
+        
+        if (option == 1) // Пользователь выбрал записать информацию в существующий файл.
+        {
+            Console.WriteLine("\n1) Запись с помощью перенаправленного потока.\n");
+            Console.WriteLine("2) Запись с помощью файлового потока");
+            Console.WriteLine("Введите опцию: ");
+            int streamOption = 0; // Переменная опции выбора.
+            while (!int.TryParse(Console.ReadLine(), out streamOption) && streamOption < 0 && streamOption > 2) // Проверка на корректность введенной опции.
+            {
+                Console.WriteLine("Ошибка, введены неправильные значения."); // Сообщаем пользователю об ошибке.
+            }
+
+            switch (streamOption) // Switch-case конструкция для обработки опции.
+            {
+                case 1: // Пользователь выбрал запись с помощью перенаправленного потока
+                    streamWrite(path, jsonFile); // Используем запись в существующий файл с помощью перенаправленного потока.
+                    break;
+                case 2: // Пользователь выбрал запись с помощью файлового потока.
+                    fileWrite(path, jsonFile); // Используем запись в существующий файл с помощью файлового потока.
+                    break;
+            }
+        }
+        else if (option == 2) // Пользователь выбрал записать информацию в новый файл.
+        {
+            Console.WriteLine("1) Запись с помощью перенаправленного потока.");
+            Console.WriteLine("2) Запись с помощью файлового потока");
+            Console.WriteLine("Введите опцию: ");
+            int streamOption = 0; // Переменная опции выбора.
+            while (!int.TryParse(Console.ReadLine(), out streamOption) && streamOption < 0 && streamOption > 2) // Проверка на корректность введенной опции.
+            {
+                Console.WriteLine("Ошибка, введены неправильные значения."); // Сообщаем пользователю об ошибке.
+            }
+
+            switch (streamOption) // Switch-case конструкция для обработки опции.
+            {
+                case 1: // Используем запись в новый файл с помощью перенаправленного потока.
+                    streamWriteNew(path, jsonFile); // Используем запись в новый файл с помощью перенаправленного потока.
+                    break;
+                case 2: // Пользователь выбрал запись с помощью файлового потока.
+                    fileWriteNew(path, jsonFile); // Используем запись в новый файл с помощью файлового потока.
+                    break;
+            }
+        }
+    }
+
+    private static void streamWrite(string path, string line) // Метод для записи в существующий файл с помощью перенаправленного потока.
+    {
+        using (StreamWriter fileStreamWriter = new StreamWriter(path, false))
+        {
+            fileStreamWriter.Write(line);
+        }
+        Console.WriteLine("\nФайл успешно записан с помощью перенаправленного потока.\n");
+    }
+    
+    private static void streamWriteNew(string path, string line) // Метод для записи в новый файл с помощью перенаправленного потока.
+    {
+        using (StreamWriter file = new StreamWriter(path, true))
+        {
+            file.Write(line);
+        }
+        Console.WriteLine("\nФайл успешно записан с помощью перенаправленного потока.\n");
+    }
+
+    private static void fileWriteNew(string path, string line) // Метод для записи в новый файл с помощью файлового потока.
+    {
+        File.Create(path);
+        File.WriteAllText(path, line);
+        Console.WriteLine("\nФайл успешно перезаписан с помощью файлового потока.\n");
+    }
+    
+    private static void fileWrite(string path, string line) // Метод для записи в существующий файл с помощью файлового потока.
+    {
+        using (FileStream fileStream = new FileStream(path, FileMode.Create))
+        {
+            byte[] info = Encoding.UTF8.GetBytes(line);
+            fileStream.Write(info, 0, line.Length);
+        }
+        Console.WriteLine("\nФайл успешно перезаписан с помощью файлового потока.");
     }
 
     public static List<Apartments> ReadJson(string filePath, int option) // Метод чтения информации из JSON-файла.
