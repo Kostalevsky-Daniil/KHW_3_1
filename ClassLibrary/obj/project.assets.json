@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/daniilkostalevsky/Code/C#/KHW_3_1/ClassLibrary/ClassLibrary.csproj",
+      "projectUniqueName": "/Users/daniilkostalevsky/Code/C#/CHW/KHW_3_1/ClassLibrary/ClassLibrary.csproj",
       "projectName": "ClassLibrary",
-      "projectPath": "/Users/daniilkostalevsky/Code/C#/KHW_3_1/ClassLibrary/ClassLibrary.csproj",
+      "projectPath": "/Users/daniilkostalevsky/Code/C#/CHW/KHW_3_1/ClassLibrary/ClassLibrary.csproj",
       "packagesPath": "/Users/daniilkostalevsky/.nuget/packages/",
-      "outputPath": "/Users/daniilkostalevsky/Code/C#/KHW_3_1/ClassLibrary/obj/",
+      "outputPath": "/Users/daniilkostalevsky/Code/C#/CHW/KHW_3_1/ClassLibrary/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/daniilkostalevsky/.nuget/NuGet/NuGet.Config"

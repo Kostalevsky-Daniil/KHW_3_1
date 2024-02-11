@@ -1,6 +1,6 @@
 ﻿using ClassLibrary;
 
-class Program
+static class Program
 {
     public static void Main()
     {
@@ -8,8 +8,7 @@ class Program
         {
             do
             {
-                Console.WriteLine(JsonParser.ReadJson("/Users/daniilkostalevsky/Code/C#/KHW_3_1/KHW_3_1/data_13V (1).json"));
-                // Menu.MainMenu();
+                Menu.MainMenu(); // Вызываем метод меню, через который будем работать с файлом.
                 Console.WriteLine("Нажмите ESC, чтобы выйти из программы.");
             } while (Console.ReadKey().Key != ConsoleKey.Escape);
         }

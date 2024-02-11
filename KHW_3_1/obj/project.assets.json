@@ -32,11 +32,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/daniilkostalevsky/Code/C#/KHW_3_1/KHW_3_1/KHW_3_1.csproj",
+      "projectUniqueName": "/Users/daniilkostalevsky/Code/C#/CHW/KHW_3_1/KHW_3_1/KHW_3_1.csproj",
       "projectName": "KHW_3_1",
-      "projectPath": "/Users/daniilkostalevsky/Code/C#/KHW_3_1/KHW_3_1/KHW_3_1.csproj",
+      "projectPath": "/Users/daniilkostalevsky/Code/C#/CHW/KHW_3_1/KHW_3_1/KHW_3_1.csproj",
       "packagesPath": "/Users/daniilkostalevsky/.nuget/packages/",
-      "outputPath": "/Users/daniilkostalevsky/Code/C#/KHW_3_1/KHW_3_1/obj/",
+      "outputPath": "/Users/daniilkostalevsky/Code/C#/CHW/KHW_3_1/KHW_3_1/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/daniilkostalevsky/.nuget/NuGet/NuGet.Config"
@@ -51,8 +51,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "/Users/daniilkostalevsky/Code/C#/KHW_3_1/ClassLibrary/ClassLibrary.csproj": {
-              "projectPath": "/Users/daniilkostalevsky/Code/C#/KHW_3_1/ClassLibrary/ClassLibrary.csproj"
+            "/Users/daniilkostalevsky/Code/C#/CHW/KHW_3_1/ClassLibrary/ClassLibrary.csproj": {
+              "projectPath": "/Users/daniilkostalevsky/Code/C#/CHW/KHW_3_1/ClassLibrary/ClassLibrary.csproj"
             }
           }
         }
